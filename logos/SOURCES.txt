@@ -1,0 +1,10 @@
+Netflix: https://www.netflix.com/favicon.ico
+Disney+: https://www.disneyplus.com/favicon.ico
+YouTube: https://www.youtube.com/favicon.ico
+ChatGPT: https://cdn.oaistatic.com/assets/favicon-eex17e9e.ico
+
+Retrieved on 2026-10-10 from each platform's own assets. Logos identify the
+corresponding service; trademarks belong to their respective owners.
+
+prime-video.svg, tiktok.svg, claude.svg, gemini.svg: simplified SVG service
+identifiers authored for the interface on 2026-10-11.

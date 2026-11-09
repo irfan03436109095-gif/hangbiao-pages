@@ -1,0 +1,119 @@
+{
+  "provider": "FlyBit",
+  "startedAt": "2026-10-10T08:42:03.176Z",
+  "environment": "Windows 本地测试机；地区、运营商与宽带套餐带宽未核实",
+  "core": "mihomo v1.19.32",
+  "nodeCount": 75,
+  "latencyTarget": "https://www.gstatic.com/generate_204",
+  "downloadTarget": "https://speed.cloudflare.com/__down?bytes=10000000",
+  "payloadBytes": 10000000,
+  "samples": [
+    {
+      "region": "香港",
+      "name": "🇭🇰 香港 | 00",
+      "protocol": "vless",
+      "delays": [
+        222,
+        280,
+        247
+      ],
+      "downloads": [
+        {
+          "checkedAt": "2026-10-10T08:42:24.431Z",
+          "complete": false
+        },
+        {
+          "checkedAt": "2026-10-10T08:42:39.551Z",
+          "complete": false
+        },
+        {
+          "checkedAt": "2026-10-10T08:42:54.661Z",
+          "complete": false
+        }
+      ],
+      "failures": 0,
+      "averageMbps": null,
+      "medianDelay": 247
+    },
+    {
+      "region": "日本",
+      "name": "🇯🇵 日本 | 01",
+      "protocol": "vless",
+      "delays": [
+        98,
+        89,
+        95
+      ],
+      "downloads": [
+        {
+          "checkedAt": "2026-10-10T08:43:10.043Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 12.50936,
+          "mbps": 6.4,
+          "complete": true
+        },
+        {
+          "checkedAt": "2026-10-10T08:43:24.241Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 14.106207,
+          "mbps": 5.67,
+          "complete": true
+        },
+        {
+          "checkedAt": "2026-10-10T08:43:25.912Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 1.561882,
+          "mbps": 51.22,
+          "complete": true
+        }
+      ],
+      "failures": 0,
+      "averageMbps": 21.1,
+      "medianDelay": 95
+    },
+    {
+      "region": "美国",
+      "name": "🇺🇸 美国 | 01",
+      "protocol": "vless",
+      "delays": [
+        222,
+        208,
+        215
+      ],
+      "downloads": [
+        {
+          "checkedAt": "2026-10-10T08:43:33.443Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 3.92979,
+          "mbps": 20.36,
+          "complete": true
+        },
+        {
+          "checkedAt": "2026-10-10T08:43:37.132Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 3.5891,
+          "mbps": 22.29,
+          "complete": true
+        },
+        {
+          "checkedAt": "2026-10-10T08:43:41.237Z",
+          "status": 200,
+          "bytes": 10000000,
+          "seconds": 3.994136,
+          "mbps": 20.03,
+          "complete": true
+        }
+      ],
+      "failures": 0,
+      "averageMbps": 20.89,
+      "medianDelay": 215
+    }
+  ],
+  "scope": "每地区选取 1 个节点，每节点 3 次 HTTP 延迟与 3 次 10 MB 下载。丢包率、长期可用率及平台播放解锁未测。",
+  "finishedAt": "2026-10-10T08:43:41.240Z"
+}
