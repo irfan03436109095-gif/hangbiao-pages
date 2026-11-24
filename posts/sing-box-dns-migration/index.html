@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="icon" href="/favicon.svg?v=wangpai-crown" type="image/svg+xml" />
+    
+    <script type="module" crossorigin src="/assets/index-STiJNBr2.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-n57Je62o.css">
+<meta name="description" content="依据 sing-box 官方迁移与弃用文档，解读新 DNS 配置格式对旧机场订阅的影响，区分软件版本、订阅生成器和配置语法，并给出升级前后的验证步骤。" /><meta name="keywords" content="机场推荐,机场对比,机场订阅,机场套餐,机场节点,机场选购指南,机场使用教程,科学上网,VPN推荐,梯子推荐,高端专线,性价比,免费试用,科学上网教程,翻墙软件安装" /><meta name="robots" content="noindex" data-site-page-robots="true" /><title>行业观察：sing-box DNS 配置迁移为何影响旧机场订阅 &#183; 王牌VPN机场测评</title><link rel="canonical" href="https://www.wangpaivpn.com/article/legacy-wangpai-352/" /><meta property="og:type" content="article" /><meta property="og:title" content="行业观察：sing-box DNS 配置迁移为何影响旧机场订阅 &#183; 王牌VPN机场测评" /><meta property="og:description" content="依据 sing-box 官方迁移与弃用文档，解读新 DNS 配置格式对旧机场订阅的影响，区分软件版本、订阅生成器和配置语法，并给出升级前后的验证步骤。" /><meta property="og:url" content="https://www.wangpaivpn.com/article/legacy-wangpai-352/" /><script type="application/ld+json" id="site-page-structured-data">{"@context":"https://schema.org","@type":"Article","author":{"@type":"Person","name":"王牌VPN 编辑部"},"datePublished":"2026-10-02","description":"依据 sing-box 官方迁移与弃用文档，解读新 DNS 配置格式对旧机场订阅的影响，区分软件版本、订阅生成器和配置语法，并给出升级前后的验证步骤。","headline":"行业观察：sing-box DNS 配置迁移为何影响旧机场订阅","mainEntityOfPage":"https://www.wangpaivpn.com/article/legacy-wangpai-352/","publisher":{"@type":"Organization","name":"王牌VPN机场测评"}}</script>
+<style id="static-public-page-style">.static-public-page{font-size:16px;line-height:1.9}.static-public-page h1{font-size:30px}.static-public-page h2{font-size:22px;margin:1.5em 0 .5em}.static-public-page p{margin:.9em 0}.static-public-page a{color:#5947eb;text-decoration:underline}.static-public-page nav a{margin-right:1em}.static-public-page dl{display:grid;grid-template-columns:100px 1fr;gap:.4em}.static-public-page dd{margin:0}.static-public-page td,.static-public-page th{white-space:normal}.static-public-page .table-container{overflow:auto}.static-public-page-sidebar a{display:block;padding:.5em}.static-public-page img{max-width:100%;height:auto}.static-public-page .article-cover{display:block;margin:1.5em auto;max-height:480px;object-fit:contain}.static-public-page .article-rich-body{overflow-wrap:anywhere}.static-public-page .article-rich-body pre{overflow:auto;background:#f5f4fb;padding:1em}.static-public-page .article-rich-body table{display:block;max-width:100%;overflow:auto;border-collapse:collapse}.static-public-page .article-rich-body td,.static-public-page .article-rich-body th{border:1px solid #ddd;padding:.5em .8em}.static-public-page footer{margin-top:2em}</style></head><body class="antialiased"><div id="root"><div class="app-shell dashboard-frame"><aside class="sidebar static-public-page-sidebar"><a href="/">王牌VPN</a><nav aria-label="主导航"><a href="/">测评总览</a><a href="/directory/">机场目录</a><a href="/news/">热点资讯</a><a href="/monthly/">测评报告</a><a href="/rankings/">机场排行榜</a><a href="/compare/">机场对比</a><a href="/method/">测评方法</a><a href="/tools/">翻墙工具下载</a><a href="/diagnostics/">网络检测工具</a><a href="/assessment/">测评工具</a><a href="/alerts/">跑路机场预警</a><a href="/guides/">选购指南</a></nav></aside><div class="main-shell"><main class="main-content static-public-page"><section class="detail-page detail-page-wide"><div class="detail-card"><h1>行业观察：sing-box DNS 配置迁移为何影响旧机场订阅</h1><p><a href="/article/legacy-wangpai-352/">前往文章新地址</a></p><p class="news-meta">行业观察 · <time datetime="2026-10-02">2026-10-02</time> · 5 分钟阅读</p><p class="article-summary">依据 sing-box 官方迁移与弃用文档，解读新 DNS 配置格式对旧机场订阅的影响，区分软件版本、订阅生成器和配置语法，并给出升级前后的验证步骤。</p><p class="news-author">作者：王牌VPN 编辑部</p><div class="article-rich-body"><p>代理客户端更新后，旧机场订阅有时会出现配置启动失败或 DNS 字段错误。这个现象不一定意味着节点失效，也可能是订阅生成方式没有跟上核心的配置变更。sing-box 的 DNS 格式迁移，是理解这类兼容性问题的一个具体例子。</p>
+<p>本文讨论官方文档列出的版本变更及其影响，资料核查日期为 2026 年 10 月 2 日；核查日期不代表这些变更的发布日期。</p>
+<h2 id="heading">官方文档确认了什么变化？</h2>
+<p>sing-box 的旧 DNS 服务配置在 1.12.0 被弃用，并在 1.14.0 移除。对于使用这些版本的用户，应检查当前订阅是否仍在生成旧格式。<a href="https://sing-box.sagernet.org/configuration/dns/server/legacy/" target="_blank" rel="noopener noreferrer">sing-box Legacy DNS 文档</a></p>
+<p>迁移文档按不同 DNS 类型展示了新旧结构。变化包含把旧式地址表示转为具有明确类型和相关字段的服务配置，不能把全部场景当作一次简单的文字替换。<a href="https://sing-box.sagernet.org/migration/" target="_blank" rel="noopener noreferrer">sing-box 迁移指南</a></p>
+<table>
+<thead>
+<tr>
+<th>观察层面</th>
+<th>需要核对的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图形客户端</td>
+<td>安装包版本及实际内置核心</td>
+</tr>
+<tr>
+<td>sing-box 核心</td>
+<td>当前版本支持或已移除的配置字段</td>
+</tr>
+<tr>
+<td>订阅生成器</td>
+<td>服务方或转换器输出哪种结构</td>
+</tr>
+<tr>
+<td>本地覆盖配置</td>
+<td>是否仍含旧 DNS 字段或规则</td>
+</tr>
+</tbody>
+</table>
+<p>这张表的意义是找到“谁生成了不适配的配置”。只升级客户端外壳，或者只刷新订阅，都不必然解决同一个问题。</p>
+<h2 id="heading-1">“弃用”与“移除”对用户的影响不同</h2>
+<p>弃用阶段通常意味着应安排迁移，旧结构在特定版本中可能仍能使用；移除后，相应字段可能导致校验或启动失败。具体行为必须对照你正在使用的版本。</p>
+<p>因此，看到启动错误时，先记录核心版本和字段名称，再查对应版本文档。不要因某份网上模板仍能在作者设备上运行，就假定它适用于自己的新版本。</p>
+<h2 id="heading-2">为什么一份机场订阅会受到影响？</h2>
+<p>机场服务可能根据客户端类型生成配置，也可能由用户选择某个转换目标，再导入图形客户端。如果生成器沿用旧模板，新核心读取时便可能报错。</p>
+<p>本地 DNS 覆写同样需要核对：远程配置已经更新，但本地保留的旧字段仍可能参与合并。此时反复更新订阅，未必改变最终生效的配置。</p>
+<p>**本站观察与推论：**版本、生成器和覆写分开检查，比把所有错误归为“机场不稳定”更有助于定位。这是根据官方配置变更整理的排查方法，不是对某个服务商故障的调查结论。</p>
+<h2 id="heading-3">升级前，准备一份可恢复的记录</h2>
+<p>先记录当前客户端与核心版本、订阅格式和自己修改过的设置。备份时注意配置文件可能包含订阅令牌、节点密码或其他认证信息，应保存在私有位置。</p>
+<p>然后查看目标版本的迁移与弃用说明，询问服务方是否支持对应的输出格式。不要只询问“支持 sing-box 吗”，而应说明具体版本和错误字段。</p>
+<p>如果配置来自第三方转换服务，还需要考虑其是否能接触你的订阅凭据。能够直接使用服务方适配格式时，通常可以减少中间环节。</p>
+<h2 id="heading-4">升级后，按三个检查点验收</h2>
+<p>**第一，配置能否正常读取和启动。**如果仍有语法或弃用字段错误，先处理配置兼容性，再做网络测试。</p>
+<p>**第二，解析与规则是否按预期工作。**观察常用域名的请求、解析结果和出站路径。配置通过校验，并不保证解析服务在当前网络里可达。</p>
+<p>**第三，实际任务是否完成。**用升级前相同的网页、上传或通话任务做对照，记录是否出现新的中断或异常。</p>
+<p>在修复过程中一次只改变一个相关项目。若需要临时回到此前配置，应同时记录版本差异并安排迁移，不要把无限期停更当作长期策略。</p>
+<h2 id="heading-5">向服务方提出怎样的问题更有效？</h2>
+<p>可以说明：“客户端使用的 sing-box 核心版本是某版本，更新订阅后在 DNS 配置字段处报错。请确认当前订阅输出是否适配该版本，以及本地覆写应如何调整。”</p>
+<p>附上脱敏错误和字段所在部分即可。不要发送完整订阅或整份含认证信息的配置到公开讨论区。</p>
+<h2 id="heading-6">这项变化给机场推荐内容什么启示？</h2>
+<p>评估服务不能只记录它当下提供多少节点，还应记录客户端适配、更新公告和问题响应能力。愿意明确支持范围并持续维护订阅格式，是一项值得观察的服务条件。</p>
+<p>这项建议属于本站评估方法。它不表示升级频率越高越好，也不代表一次兼容性问题就足以否定整个服务。更多评估维度见<a href="/article/legacy-wangpai-344/">机场推荐选购指南</a>。</p>
+<h2 id="heading-7">常见问题</h2>
+<h3 id="mihomo--sing-box-">mihomo 和 sing-box 配置可以直接互换吗？</h3>
+<p>不能把两个核心的配置结构视为同一种格式。即使使用相同协议，配置字段、规则和功能支持也要分别核对。</p>
+<h3 id="heading-8">只修改一个字段名就能完成迁移吗？</h3>
+<p>要看具体 DNS 服务及相关路由、解析依赖。应按对应版本的官方迁移示例检查整体结构，而不是机械替换。</p>
+<h3 id="heading-9">全部节点都显示异常，为什么先查配置？</h3>
+<p>如果核心根本没有成功启动，节点没有被有效测试。先确认配置和核心状态，才能继续判断网络。</p>
+<h3 id="heading-10">订阅更新成功，为什么仍然启动失败？</h3>
+<p>下载成功只是拿到了内容，不代表内容与核心兼容；本地覆盖配置也可能参与最终结果。</p>
+<p>解析概念见<a href="/article/legacy-wangpai-351/">DNS、Fake-IP 与规则分流</a>；连接问题见<a href="/article/legacy-wangpai-350/">机场连接故障排查</a>。</p>
+<p>本文不宣称某个版本是永久适用的“最新版”，请在实际升级时重新核对项目文档。</p>
+</div><p><a href="/news/">查看全部资讯</a></p><footer><a href="/news/">热点资讯</a> · <a href="/directory/">机场目录</a> · <a href="/data/">数据说明</a></footer></div></section></main></div></div></div></body></html>
